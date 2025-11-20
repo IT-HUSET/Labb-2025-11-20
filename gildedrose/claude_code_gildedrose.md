@@ -16,9 +16,9 @@ Claude Code is a powerful terminal-based AI coding assistant with automatic chec
 npm install -g @anthropic/claude-code
 ```
 
-### 1.2 Start Claude Code Session (in the guildedrose directory)
+### 1.2 Start Claude Code Session (in the gildedrose directory)
 ```bash
-cd guildedrose # If not already there
+cd gildedrose # If not already there
 claude
 ```
 
