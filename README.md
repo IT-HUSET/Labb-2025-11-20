@@ -6,6 +6,7 @@
 
 * **Steg 1**: 
     - _Forka_ detta repository
+    - _Klona_ din forkade version till din lokala maskin _ELLER_ öppna den i en GitHub Codespace
 
 * **Steg 2**: 
    - Kicka igång en DevContainer eller Codespace (rekommenderat) _ELLER_ kör lokalt (om du har Python 3.11 eller senare installerat)
