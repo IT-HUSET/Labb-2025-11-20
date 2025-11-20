@@ -5,7 +5,7 @@
 ## Let's Build!
 
 * **Steg 1**: 
-    - _Klona_ detta repository
+    - _Forka_ detta repository
 
 * **Steg 2**: 
    - Kicka igång en DevContainer eller Codespace (rekommenderat) _ELLER_ kör lokalt (om du har Python 3.11 eller senare installerat)
