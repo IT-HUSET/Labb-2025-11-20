@@ -1,0 +1,91 @@
+{
+  "name": "Python 3.12 Dev Container",
+  "image": "mcr.microsoft.com/devcontainers/python:dev-3.13-bookworm",
+
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "installOhMyZsh": true,
+      "configureZshAsDefaultShell": true,
+      "username": "vscode",
+      "userUid": "automatic",
+      "userGid": "automatic"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts",
+      "nodeGypDependencies": true,
+      "installYarnUsingApt": true
+    },
+    "ghcr.io/va-h/devcontainers-features/uv:1": {
+      "shellAutocompletion": true
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "version": "latest"
+    }
+  },
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [9000],
+  "forwardPorts": [],
+
+  // Use 'portsAttributes' to set default properties for specific forwarded ports. 
+	// More info: https://containers.dev/implementors/json_reference/#port-attributes
+  "portsAttributes": {
+    "3000": {
+      "label": "Node/React App",
+      "onAutoForward": "openBrowserOnce"
+    },
+    "5173": {
+      "label": "Vite Dev Server",
+      "onAutoForward": "openBrowserOnce"
+    },
+    "8000": {
+      "label": "Python Dev Server",
+      "onAutoForward": "openBrowserOnce"
+    },
+    "8080": {
+      "label": "Alternative HTTP",
+      "onAutoForward": "openBrowserOnce"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "anthropic.claude-code",
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "bash",
+            "icon": "terminal-bash"
+          },
+          "zsh": {
+            "path": "zsh"
+          }
+        },
+        "[python]": {
+          "editor.formatOnSave": false
+        }
+      }
+    }
+  },
+
+  "remoteUser": "vscode",
+
+  "mounts": [
+    "source=claude-code-bashhistory-${devcontainerId},target=/commandhistory,type=volume",
+    "source=claude-code-config-${devcontainerId},target=/home/vscode/.claude,type=volume"
+  ],
+  "containerEnv": {
+    "CLAUDE_CONFIG_DIR": "/home/vscode/.claude",
+    "POWERLEVEL9K_DISABLE_GITSTATUS": "true"
+  },
+
+  "postCreateCommand": "dos2unix ./setup-devcontainer.sh 2>/dev/null || sed -i 's/\\r$//' ./setup-devcontainer.sh && sudo chmod 755 ./setup-devcontainer.sh && ./setup-devcontainer.sh"
+}
